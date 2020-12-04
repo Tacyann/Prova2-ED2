@@ -521,7 +521,7 @@ public class ArvoreRedBlack<E extends Comparable<E>> extends
 				System.out.println("Informe o Nó a ser Excluido:");
 				apagar = leitura.nextInt();
 				remover = arvore.remove(apagar);
-				String stri = Boolean.toString (remover);
+				String str = Boolean.toString (remover);
 				System.out.print("Nó "+apagar+" Excluido:");
 				System.out.println();
 				break;

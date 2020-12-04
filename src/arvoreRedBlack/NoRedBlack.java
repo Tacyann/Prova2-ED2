@@ -2,28 +2,28 @@ package arvoreRedBlack;
 
 //ReferEncia: Data Structures and Algorithms in Java - Peter Drake
 public class NoRedBlack<E> {
-	/** Black node color. */
+	/** No de cor Preta. */
 	public static final boolean BLACK = false;
 
-	/** Red node color. */
+	/** No de cor vermelha. */
 	public static final boolean RED = true;
 
-	/** Color of this node, BLACK or RED. */
+	/** Cor do no, BLACK or RED. */
 	private boolean color;
 
 	/** Item associated with this node. */
 	public E obj;
 
-	/** Left child of this node. */
+	/** Filho esquerdo do no. */
 	private NoRedBlack<E> esq;
 
 	/** Parent of this node. */
 	private NoRedBlack<E> pai;
 
-	/** Right child of this node. */
+	/** Filho direito do no. */
 	private NoRedBlack<E> dir;
 
-	/** Used for constructing a sentinel. */
+	/** Usado para construir a sentinela. */
 	protected NoRedBlack() {
 		color = BLACK;
 		// All other fields are irrelevant
