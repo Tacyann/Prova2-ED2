@@ -42,7 +42,7 @@ public class NoRedBlack<E> {
 	}
 
 	/**
-	 * Return this node's left (if direction is negative) or right (otherwise)
+	 * Retorna o no esquerdo (if direction is negative) or right (otherwise)
 	 * child.
 	 */
 	public NoRedBlack<E> getFilho(int direcao) {
@@ -62,7 +62,7 @@ public class NoRedBlack<E> {
 		return obj;
 	}
 
-	/** Return this node's left child. */
+	/** Retorna o filho do no esquerdo. */
 	public NoRedBlack<E> getEsq() {
 		return esq;
 	}
