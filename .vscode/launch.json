@@ -1,0 +1,49 @@
+{
+    // Use o IntelliSense para saber mais sobre os atributos possíveis.
+    // Focalizar para exibir as descrições dos atributos existentes.
+    // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ArvoreBusca<[Prova 2 - ED2]Tacyanne Bernadete Lima Pimentel_110e9461>",
+            "request": "launch",
+            "mainClass": "arvoreBusca.ArvoreBusca",
+            "projectName": "[Prova 2 - ED2]Tacyanne Bernadete Lima Pimentel_110e9461"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ArvoreRedBlack<[Prova 2 - ED2]Tacyanne Bernadete Lima Pimentel_110e9461>",
+            "request": "launch",
+            "mainClass": "arvoreRedBlack.ArvoreRedBlack",
+            "projectName": "[Prova 2 - ED2]Tacyanne Bernadete Lima Pimentel_110e9461"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ArvoreSplay<[Prova 2 - ED2]Tacyanne Bernadete Lima Pimentel_110e9461>",
+            "request": "launch",
+            "mainClass": "arvoreSplay.ArvoreSplay",
+            "projectName": "[Prova 2 - ED2]Tacyanne Bernadete Lima Pimentel_110e9461"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Heap<[Prova 2 - ED2]Tacyanne Bernadete Lima Pimentel_110e9461>",
+            "request": "launch",
+            "mainClass": "heapBinario.Heap",
+            "projectName": "[Prova 2 - ED2]Tacyanne Bernadete Lima Pimentel_110e9461"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Prova2ED2TacyanneBernadeteLimaPimentel<[Prova 2 - ED2]Tacyanne Bernadete Lima Pimentel_110e9461>",
+            "request": "launch",
+            "mainClass": "prova.pkg2.ed2.tacyanne.bernadete.lima.pimentel.Prova2ED2TacyanneBernadeteLimaPimentel",
+            "projectName": "[Prova 2 - ED2]Tacyanne Bernadete Lima Pimentel_110e9461"
+        }
+    ]
+}
