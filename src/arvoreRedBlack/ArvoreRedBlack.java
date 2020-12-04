@@ -495,7 +495,7 @@ public class ArvoreRedBlack<E extends Comparable<E>> extends
             opcao = Keyboard.menu("Adicionar Nó/Consulta Nó/Imprimir Arvore/ Excluir No/Terminar");
             switch (opcao){
                 case 1 :
-				System.out.println("Numero do Nó.");
+				System.out.println("Numero do Nó:");
 				valor = leitura.nextInt();
 				add = arvore.add(valor);
 				String str = Boolean.toString (add);
@@ -503,7 +503,7 @@ public class ArvoreRedBlack<E extends Comparable<E>> extends
 				System.out.println();
                 break;
                 case 2 :
-				System.out.print("Procurar Nó: ");
+				System.out.print("Procurar o Nó: ");
 				int num = leitura.nextInt();
 				if(arvore.contains(num)){
 				System.out.print("Nó "+arvore.acharNo(num)+" Encontrado!");
@@ -518,7 +518,7 @@ public class ArvoreRedBlack<E extends Comparable<E>> extends
 				System.out.println();
 				break;
 				case 4 :	
-				System.out.println("Informe o No a ser Excluido:");
+				System.out.println("Informe o Nó a ser Excluido:");
 				apagar = leitura.nextInt();
 				remover = arvore.remove(apagar);
 				String stri = Boolean.toString (remover);
