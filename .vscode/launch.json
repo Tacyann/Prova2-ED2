@@ -12,38 +12,38 @@
         },
         {
             "type": "java",
-            "name": "Debug (Launch)-ArvoreBusca<[Prova 2 - ED2]Tacyanne Bernadete Lima Pimentel_110e9461>",
+            "name": "Debug (Launch)-ArvoreBusca<Prova2-ED2_2ce60254>",
             "request": "launch",
             "mainClass": "arvoreBusca.ArvoreBusca",
-            "projectName": "[Prova 2 - ED2]Tacyanne Bernadete Lima Pimentel_110e9461"
+            "projectName": "Prova2-ED2_2ce60254"
         },
         {
             "type": "java",
-            "name": "Debug (Launch)-ArvoreRedBlack<[Prova 2 - ED2]Tacyanne Bernadete Lima Pimentel_110e9461>",
+            "name": "Debug (Launch)-ArvoreRedBlack<Prova2-ED2_2ce60254>",
             "request": "launch",
             "mainClass": "arvoreRedBlack.ArvoreRedBlack",
-            "projectName": "[Prova 2 - ED2]Tacyanne Bernadete Lima Pimentel_110e9461"
+            "projectName": "Prova2-ED2_2ce60254"
         },
         {
             "type": "java",
-            "name": "Debug (Launch)-ArvoreSplay<[Prova 2 - ED2]Tacyanne Bernadete Lima Pimentel_110e9461>",
+            "name": "Debug (Launch)-ArvoreSplay<Prova2-ED2_2ce60254>",
             "request": "launch",
             "mainClass": "arvoreSplay.ArvoreSplay",
-            "projectName": "[Prova 2 - ED2]Tacyanne Bernadete Lima Pimentel_110e9461"
+            "projectName": "Prova2-ED2_2ce60254"
         },
         {
             "type": "java",
-            "name": "Debug (Launch)-Heap<[Prova 2 - ED2]Tacyanne Bernadete Lima Pimentel_110e9461>",
+            "name": "Debug (Launch)-Heap<Prova2-ED2_2ce60254>",
             "request": "launch",
             "mainClass": "heapBinario.Heap",
-            "projectName": "[Prova 2 - ED2]Tacyanne Bernadete Lima Pimentel_110e9461"
+            "projectName": "Prova2-ED2_2ce60254"
         },
         {
             "type": "java",
-            "name": "Debug (Launch)-Prova2ED2TacyanneBernadeteLimaPimentel<[Prova 2 - ED2]Tacyanne Bernadete Lima Pimentel_110e9461>",
+            "name": "Debug (Launch)-Prova2ED2TacyanneBernadeteLimaPimentel<Prova2-ED2_2ce60254>",
             "request": "launch",
             "mainClass": "prova.pkg2.ed2.tacyanne.bernadete.lima.pimentel.Prova2ED2TacyanneBernadeteLimaPimentel",
-            "projectName": "[Prova 2 - ED2]Tacyanne Bernadete Lima Pimentel_110e9461"
+            "projectName": "Prova2-ED2_2ce60254"
         }
     ]
 }

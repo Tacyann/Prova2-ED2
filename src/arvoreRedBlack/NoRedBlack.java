@@ -52,6 +52,13 @@ public class NoRedBlack<E> {
 		return color;
 	}
 
+	public boolean hasTwoBlackChildren(){
+        if ((esq.color == BLACK) && (dir.color == BLACK))
+            return true;
+        return false;
+    }
+
+
 	/** Retornar o item associado a este no. */
 	public E getObj() {
 		return obj;
