@@ -10,34 +10,38 @@ import keyboard.Keyboard;
 public class ArvoreRedBlack<E extends Comparable<E>> extends
 		ColecaoComparavel<E> {
 
-	/** The root node of this tree. */
+	/** O nó raiz da arvore.*/
 	NoRedBlack<E> raiz;
 
-	/** All "null" node references actually point to this node. */
+	/** Todas as referências de nó "nulas" realmente apontam para este nó.*/
 	private NoRedBlack<E> sentinel;	
 
 	private class ArvoreIterator implements MyIterator<E> {
+
+		/** criar a variavel atual como generica.*/
 		private E atual;
 		private FilaEnc<E> fila = new FilaEnc<E>();
 
 		private void simetrica(NoRedBlack<E> no) {
 			Stack<NoRedBlack<E>> pilha = new Stack<NoRedBlack<E>>();
+			/** noTemp recebe valor nulo.*/
 			NoRedBlack<E> noTemp = null;
 
-			// Coloca na pilha todos os nos da esqueda
+			/** Coloca na pilha todos os nos da esqueda.*/
 			while (no != sentinel) {
 				pilha.add(no);
 				no = no.getEsq();
 			}
-
+			
+			/** Enquanto a Pilha for !vazio.*/
 			while (!pilha.isEmpty()) {
 
-				// tira o ultimo no da pilha e add na fila
+				/** Tira o ultimo no da pilha e add na fila.*/
 				noTemp = pilha.pop();
 				fila.insira(noTemp.getObj());
 
-				// pega o no da direita e coloca na pilha e repete o percuso
-				// simetrico nos nos da esqueda
+				/** Pega o no da direita e coloca na pilha e vai repetir o percuso
+				simetrico nos nos da esquerda.*/
 				noTemp = noTemp.getDir();
 				if (noTemp != sentinel) {
 					pilha.add(noTemp);
@@ -52,35 +56,37 @@ public class ArvoreRedBlack<E extends Comparable<E>> extends
 		}
 
 		private E get() {
+			/** Verifica se a pilha está vazia.*/
 			if (fila.isEmpty())
 				return null;
 			atual = fila.remova();
 			return atual;
 		}
 
+		/** Metodo para pegar o primeiro elemento.*/
 		@Override
 		public E getFirst() {
 			simetrica(raiz);
 			return get();
 		}
-
+		/** Metodo para pegar o proximo elemento.*/
 		@Override
 		public E getNext() {
 			return get();
 		}
-
+		/** Metodo para remover o no atual.*/
 		@Override
 		public void remove() {
 			ArvoreRedBlack.this.remove(atual);
 		}
 	}
 
-	/** The tree is initially empty. */
+	/** Inicializando o meu Construtor com uma arvore vazia.*/
 	public ArvoreRedBlack() {
 		sentinel = new NoRedBlack<E>();
 		raiz = sentinel;
 	}
-
+	/** Rotacao para a Esquerda.*/
 	private void rotacaoParaEsquerda(NoRedBlack<E> no) {
 		if (no.getDir() == sentinel)
 			return;
@@ -104,6 +110,7 @@ public class ArvoreRedBlack<E extends Comparable<E>> extends
 		no.setPai(filho);
 	}
 
+	/** Rotacao para Direita.*/
 	private void rotacaoParaDireita(NoRedBlack<E> no) {
 		if (no.getEsq() == sentinel)
 			return;
@@ -128,11 +135,11 @@ public class ArvoreRedBlack<E extends Comparable<E>> extends
 		no.setPai(filho);
 	}
 
-	// Caso5: O pai do no e' vermelho e o tio e' preto.
-	// Alem disso, o no e o pai sao filhos esquerdos(ou direitos)
+	/** Caso5: O pai do no e vermelho e o tio e preto.
+	* Alem disso, o no e o pai sao filhos esquerdos(ou direitos).*/
 	private void insertCase5(NoRedBlack<E> no) {
 		NoRedBlack<E> avo = no.getAvo();
-		no.getPai().setBlack();
+		no.getPai().setBlack();//Se e a raiz, entao deve ser preto.
 		avo.setRed();
 		if (no.isFilhoEsquerdo())
 			rotacaoParaDireita(avo);
@@ -140,8 +147,8 @@ public class ArvoreRedBlack<E extends Comparable<E>> extends
 			rotacaoParaEsquerda(avo);
 	}
 
-	// Caso4: O no e' filho direito(ou esquerdo) do pai, o pai e' filho
-	// esquerdo(ou direito) do avo e o tio e' preto
+	/**Caso4: O no e filho direito(ou esquerdo) do pai, o pai e o filho
+	* esquerdo(ou direito) do avo e o tio e preto.*/
 	private void insertCase4(NoRedBlack<E> no) {
 		NoRedBlack<E> avo = no.getAvo();
 		if (no.isFilhoDireito() && no.getPai().isFilhoEsquerdo()) {
@@ -154,12 +161,12 @@ public class ArvoreRedBlack<E extends Comparable<E>> extends
 		insertCase5(no);
 	}
 
-	// Caso3: O tio e o pai do no sao vermelhos e o avo e' preto
+	/**Caso3: O tio e o pai do no sao vermelhos e o avo e preto.*/
 	private void insertCase3(NoRedBlack<E> no) {
 		NoRedBlack<E> tio = no.getTio();
 		NoRedBlack<E> avo = no.getAvo();
 		if (tio != sentinel && tio.isRed()) {
-			no.getPai().setBlack();
+			no.getPai().setBlack();//Se e a raiz, entao deve ser preto.
 			tio.setBlack();
 			avo.setRed();
 			insertCase1(avo);
@@ -167,15 +174,18 @@ public class ArvoreRedBlack<E extends Comparable<E>> extends
 			insertCase4(no);
 	}
 
-	// Caso2: O pai do no' e' preto
+	/**Caso2: O pai do no e preto, ou seja Ao inserir x, 
+	 * se o tio de x é vermelho, é necessário fazer a
+	 * recoloração de a, t e p.*/
 	private void insertCase2(NoRedBlack<E> no) {
-		if (no.getPai().isBlack())
+		if (no.getPai().isBlack()) //Se e a raiz, entao deve ser preto.
 			return;
 		else
 			insertCase3(no);
 	}
 
-	// Caso1: A raiz e' vermelha
+	/**Caso1: A raiz e vermelha, ou seja a arvore esta vazia, 
+	* logo a cor do no é preta e satisfaz a propriedade 2.*/
 	private void insertCase1(NoRedBlack<E> no) {
 		if (no == raiz)
 			no.setBlack();
@@ -183,7 +193,7 @@ public class ArvoreRedBlack<E extends Comparable<E>> extends
 			insertCase2(no);
 	}
 
-	// Caso 1: O no corrente e' a raiz
+	/**Caso 1: O no corrente e a raiz.*/
 	private void deleteCase1(NoRedBlack<E> no) {
 		if (no.getPai() == sentinel)
 			return;
@@ -191,14 +201,14 @@ public class ArvoreRedBlack<E extends Comparable<E>> extends
 			deleteCase2(no);
 	}
 
-	// Caso 2: O irmao do no corrente e' vermelho
+	/**Caso 2: O irmao do no corrente e vermelho.*/
 	private void deleteCase2(NoRedBlack<E> no) {
 		NoRedBlack<E> s = no.getIrmao();
-		if (s == sentinel)
+		if (s == sentinel) //s for igual a sentinel.
 			return;
-		if (s.isRed()) {
-			no.getPai().setRed();
-			s.setBlack();
+		if (s.isRed()) { //Receber a cor vermelha.
+			no.getPai().setRed();//Receber a cor vermelha.
+			s.setBlack();//Receber a cor preta.
 			if (no.isFilhoEsquerdo())
 				rotacaoParaEsquerda(no.getPai());
 			else
@@ -207,68 +217,68 @@ public class ArvoreRedBlack<E extends Comparable<E>> extends
 		deleteCase3(no);
 	}
 
-	// Caso 3: O irmao do no corrente e' preto,
-	// o pai e' preto e os filhos do irmao sao pretos
+	/**Caso 3: O irmao do no corrente e preto,
+	**o pai e preto e os filhos do irmao sao pretos.*/
 	private void deleteCase3(NoRedBlack<E> no) {
 		NoRedBlack<E> s = no.getIrmao();
-		if (s == sentinel)
+		if (s == sentinel)//s for igual a sentinel.
 			return;
 		if (no.getPai().isBlack() && s.isBlack() && s.getEsq().isBlack()
 				&& s.getDir().isBlack()) {
-			s.setRed();
+			s.setRed();//Receber a cor vermelha.
 			deleteCase1(no.getPai());
 		} else
 			deleteCase4(no);
 	}
 
-	// Caso 4: O irmao do no corrente e' preto,
-	// o pai e' vermelho e os filhos do irmao sao pretos
+	/**Caso 4: O irmao do no corrente e preto,
+	**o pai e vermelho e os filhos do irmao sao pretos.*/
 	private void deleteCase4(NoRedBlack<E> no) {
 		NoRedBlack<E> s = no.getIrmao();
-		if (s == sentinel)
+		if (s == sentinel)//s for igual a sentinel.
 			return;
 		if (no.getPai().isRed() && s.isBlack() && s.getEsq().isBlack()
 				&& s.getDir().isBlack()) {
-			s.setRed();
-			no.getPai().setBlack();
+			s.setRed();//Receber a cor vermelha.
+			no.getPai().setBlack();//Receber a cor preta.
 		} else
 			deleteCase5(no);
 	}
 
-	// Caso 5: O no e' filho esquerdo do pai,
-	// o irmao e' preto, o filho esquerdo do irmao e' vermelho
-	// e o filho direito do irmao e' preto
+	/**Caso 5: O no e filho esquerdo do pai, o irmao 
+	 * e preto, o filho esquerdo do irmao e vermelho
+	 * e o filho direito do irmao e preto.*/
 	private void deleteCase5(NoRedBlack<E> no) {
 		NoRedBlack<E> s = no.getIrmao();
-		if (s == sentinel)
+		if (s == sentinel)//s for igual a sentinel.
 			return;
 		if (no.isFilhoEsquerdo() && s.isBlack() && s.getEsq().isRed()
 				&& s.getDir().isBlack()) {
-			s.setRed();
-			s.getEsq().setBlack();
+			s.setRed();//Receber a cor vermelha.
+			s.getEsq().setBlack();//Receber a cor preta.
 			rotacaoParaDireita(s);
 		} else if (no.isFilhoDireito() && s.isBlack() && s.getDir().isRed()
-				&& s.getEsq().isBlack()) {
-			s.setRed();
-			s.getDir().setBlack();
+				&& s.getEsq().isBlack()) {//Receber a cor preta.
+			s.setRed();//Receber a cor vermelha.
+			s.getDir().setBlack();//Receber a cor preta e rotacionar para esquerda.
 			rotacaoParaEsquerda(s);
 		}
 		deleteCase6(no);
 	}
 
-	// Caso 6: O no e' filho esquerdo do pai,
-	// o irmao e' preto, o filho esquerdo do irmao e' vermelho
+	/**Caso 6: O no e filho esquerdo do pai,
+	 *o irmao e preto, o filho esquerdo do irmao e vermelho.*/
 	private void deleteCase6(NoRedBlack<E> no) {
 		NoRedBlack<E> s = no.getIrmao();
-		if (s == sentinel)
+		if (s == sentinel)//s for igual a sentinel.
 			return;
 		s.setColor(no.getPai().getColor());
-		no.getPai().setBlack();
+		no.getPai().setBlack();//Receber a cor preta.
 		if (no.isFilhoEsquerdo()) {
-			s.getDir().setBlack();
+			s.getDir().setBlack();//Receber a cor preta.
 			rotacaoParaEsquerda(no.getPai());
 		} else {
-			s.getEsq().setBlack();
+			s.getEsq().setBlack();//Receber a cor preta.
 			rotacaoParaDireita(no.getPai());
 		}
 
@@ -288,23 +298,23 @@ public class ArvoreRedBlack<E extends Comparable<E>> extends
 	@Override
 	public boolean remove(E obj) {
 		NoRedBlack<E> achado = acharNo(obj);
-		// achou então atual é diferente de null
+		// achou então atual e diferente de sentinel.
 		if (achado != sentinel) {
-			// Verifica se o no tem dois filhos
+			// Verifica se o no tem dois filhos.
 			if (achado.getDir() != sentinel && achado.getEsq() != sentinel) {
-				// procura na subarvore esquerda o no que esta mais a direita
+				// procura na subarvore esquerda o no que esta mais a direita.
 				NoRedBlack<E> pTemp = achado.getEsq();
 
 				while (pTemp.getDir() != sentinel)
 					pTemp = pTemp.getDir();
 
-				// copia o objeto do no mais a direita que desejamos remover
+				// copia o objeto do no mais a direita que desejamos remover.
 				achado.setObj(pTemp.getObj());
 				achado = pTemp;
-				// agora removo achado
+				// agora removo achado.
 
 			}
-
+			// achou e igual a raiz.
 			if (achado == raiz) {
 				if (raiz.getEsq() != sentinel)
 					raiz = raiz.getEsq();
@@ -328,24 +338,24 @@ public class ArvoreRedBlack<E extends Comparable<E>> extends
 				} else {
 					pai.setFilho(direcao, filho.getDir());
 					if (filho.getDir() != sentinel)
-						filho.getDir().setPai(pai);
+						filho.getDir().setPai(pai); 
 				}
 			}
-			numItens--;
-			deleteCase1(achado);
+			numItens--; // numItens e incrementado.
+			deleteCase1(achado);//apagar caso1.
 			return true;
 		}
 		return false;
 
 	}
 
-	// acha o no pai para add, se o no for colocado como rais retorna sentinel,
-	// se achar retorna null
+	// acha o no pai para add, se o no for colocado como raiz retorna sentinel,
+	// se achar retorna null.
 	private NoRedBlack<E> acharNoPaiAdd(E obj) {
 		NoRedBlack<E> pai = sentinel;
 		NoRedBlack<E> atual = raiz;
 		int comparacao;
-		// achar no para add
+		// achar no para add.
 		while (atual != sentinel) {
 			comparacao = obj.compareTo(atual.getObj());
 			if (comparacao == 0)
@@ -364,7 +374,7 @@ public class ArvoreRedBlack<E extends Comparable<E>> extends
 	private NoRedBlack<E> acharNo(E obj) {
 		NoRedBlack<E> atual = raiz;
 		int comparacao;
-		// achar no
+		// achar no.
 		while (atual != sentinel) {
 			comparacao = obj.compareTo(atual.getObj());
 			if (comparacao == 0)
@@ -401,7 +411,7 @@ public class ArvoreRedBlack<E extends Comparable<E>> extends
 					noPai.setEsq(no);
 				no.setPai(noPai);
 			} else {
-				// se no pai for sentinel que dizer que o no vai ser raiz
+				// se no pai for sentinel que dizer que o no vai ser raiz.
 				raiz = no;
 			}
 			insertCase1(no);
@@ -500,30 +510,25 @@ public class ArvoreRedBlack<E extends Comparable<E>> extends
 				add = arvore.add(valor);
 				String str = Boolean.toString (add);
 				System.out.print("Nó:"+valor+" Adiconado!");
-				System.out.println();
                 break;
                 case 2 :
 				System.out.print("Procurar o Nó: ");
 				int num = leitura.nextInt();
 				if(arvore.contains(num)){
 				System.out.print("Nó "+arvore.acharNo(num)+" Encontrado!");
-				System.out.println();
 				}else{
 				System.out.print("Nó "+num+" Não Encontrado!!!");
-				System.out.println();
 				}
 				break;
                 case 3 :
 				arvore.desenhe(100);
-				System.out.println();
 				break;
 				case 4 :	
 				System.out.println("Informe o Nó a ser Excluido:");
 				apagar = leitura.nextInt();
 				remover = arvore.remove(apagar);
-				String str = Boolean.toString (remover);
+				String stri = Boolean.toString (remover);
 				System.out.print("Nó "+apagar+" Excluido:");
-				System.out.println();
 				break;
                 }
         } while (opcao != 5);

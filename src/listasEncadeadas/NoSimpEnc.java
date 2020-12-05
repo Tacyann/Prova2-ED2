@@ -2,7 +2,7 @@ package listasEncadeadas;
 
 import java.io.Serializable;
 
-/* Referência: Data Structures and Algorithms in Java
+/* Referï¿½ncia: Data Structures and Algorithms in Java
  * Peter Drake
  */
 public class NoSimpEnc<E> implements Serializable {
@@ -10,34 +10,34 @@ public class NoSimpEnc<E> implements Serializable {
 
 	private NoSimpEnc<E> prox;
 
-	// Cria um nó com o campo prox igual a null
+	// Cria um nï¿½ com o campo prox igual a null
 	public NoSimpEnc(E obj) {
 		this.obj = obj;
 		this.prox = null;
 	}
 
-	// Cria um nó com uma referência ao próximo nó
+	// Cria um nï¿½ com uma referï¿½ncia ao prï¿½ximo nï¿½
 	public NoSimpEnc(E obj, NoSimpEnc<E> prox) {
 		this.obj = obj;
 		this.prox = prox;
 	}
 
-	// Retorna o objeto armazenado no nó
+	// Retorna o objeto armazenado no nï¿½
 	public E getObj() {
 		return obj;
 	}
 
-	// Retorna a referência ao próximo nó
+	// Retorna a referï¿½ncia ao prï¿½ximo nï¿½
 	public NoSimpEnc<E> getProx() {
 		return prox;
 	}
 
-	// Altera a referência do objeto armazenado no nó
+	// Altera a referï¿½ncia do objeto armazenado no nï¿½
 	public void setObj(E obj) {
 		this.obj = obj;
 	}
 
-	// Altera a referência ao próximo nó
+	// Altera a referï¿½ncia ao prï¿½ximo nï¿½
 	public void setProx(NoSimpEnc<E> prox) {
 		this.prox = prox;
 	}

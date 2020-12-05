@@ -4,13 +4,18 @@ import java.io.Serializable;
 
 public class NoAVL<E> implements Serializable{
 	
-	/** Contém o objeto associado a esse nó. */
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/** Contï¿½m o objeto associado a esse nï¿½. */
 	private E obj;
  
-	/** Referência à subárvore esquerda. */
+	/** Referï¿½ncia ï¿½ subï¿½rvore esquerda. */
 	private NoAVL<E> esq;
 
-	/** referência a subárvore direita. */
+	/** referï¿½ncia a subï¿½rvore direita. */
 	private NoAVL<E> dir;
 	
 	private int altura;
@@ -32,7 +37,7 @@ public class NoAVL<E> implements Serializable{
 		this.altura = altura;
 	}
 
-	/** Cria um nó com filhos nulos (folha) */
+	/** Cria um nï¿½ com filhos nulos (folha) */
 	public NoAVL(E obj) {
 		this.obj = obj;
 		this.esq = null;
@@ -41,7 +46,7 @@ public class NoAVL<E> implements Serializable{
 		this.altura = 0;
 	}
 
-	/** Cria um nó com as respectivas subárvores esquerda e direita. */
+	/** Cria um nï¿½ com as respectivas subï¿½rvores esquerda e direita. */
 	public NoAVL(E obj, NoAVL<E> esq, NoAVL<E> dir) {
 		this.obj = obj;
 		this.esq = esq;
@@ -50,43 +55,43 @@ public class NoAVL<E> implements Serializable{
 		this.altura = 0;
 	}
 
-	/** Retorna o objeto associado a esse nó. */
+	/** Retorna o objeto associado a esse nï¿½. */
 	public E getObj() {
 		return obj;
 	}
 
-	/** Retorna a referência da subárvore esquerda. */
+	/** Retorna a referï¿½ncia da subï¿½rvore esquerda. */
 	public NoAVL<E> getEsq() {
 		return esq;
 	}
 
-	/** Retorna a referência da subárvore direita. */
+	/** Retorna a referï¿½ncia da subï¿½rvore direita. */
 	public NoAVL<E> getDir() {
 		return dir;
 	}
 
-	/** Retorna true se o nó é uma folha. */
+	/** Retorna true se o nï¿½ ï¿½ uma folha. */
 	public boolean ehFolha() {
 		return (esq == null) && (dir == null);
 	}
 
-	/** Substitui o objeto armazenado no nó por obj. */
+	/** Substitui o objeto armazenado no nï¿½ por obj. */
 	public void setObj(E obj) {
 		this.obj = obj;
 	}
 
-	/** Substitui a referência da subárvore esquerda por esq. */
+	/** Substitui a referï¿½ncia da subï¿½rvore esquerda por esq. */
 	public void setEsq(NoAVL<E> esq) {
 		this.esq = esq;
 	}
 
-	/** Substitui a referência da subárvore direita por dir. */
+	/** Substitui a referï¿½ncia da subï¿½rvore direita por dir. */
 	public void setDir(NoAVL<E> dir) {
 		this.dir = dir;
 	}
 	
-	/** Retorna o filho do nó de acordo com o valor de direcao. Se direcao < 0
-	 * retorna o filho esquerdo caso contrário retorna o filho direito.
+	/** Retorna o filho do nï¿½ de acordo com o valor de direcao. Se direcao < 0
+	 * retorna o filho esquerdo caso contrï¿½rio retorna o filho direito.
 	 */
 	public NoAVL<E> getFilho(int direcao) {
 		if (direcao < 0)
@@ -95,8 +100,8 @@ public class NoAVL<E> implements Serializable{
 			return dir;
 	}
 
-	/** Atribui o filho do nó de acordo com o valor de direcao. Se direcao < 0
-	 * atribui o filho esquerdo, caso contrário, atribui o filho direito.
+	/** Atribui o filho do nï¿½ de acordo com o valor de direcao. Se direcao < 0
+	 * atribui o filho esquerdo, caso contrï¿½rio, atribui o filho direito.
 	 */
 	public void setFilho(int direcao, NoAVL<E> filho) {
 		if (direcao < 0)

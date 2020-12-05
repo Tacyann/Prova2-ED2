@@ -56,7 +56,7 @@ public class ListaEncOrd<E extends Comparable<E>> implements Serializable {
 		@Override
 		public void remove() {
 			// numa classe interna para chamar um metodo de mesmo nome da classe
-			// é so colocar o nome da classe.this.nome do metodo;
+			// ï¿½ so colocar o nome da classe.this.nome do metodo;
 			// ListaEncOrd.this.remove(noAtual);
 			// noAtual.remove(); pode ser usado desta forma.
 			noAtual.remove();

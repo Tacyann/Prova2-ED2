@@ -1,6 +1,4 @@
 package arvoreRedBlack;
-
-//ReferEncia: Data Structures and Algorithms in Java - Peter Drake
 public class NoRedBlack<E> {
 	/** No de cor Preta. */
 	public static final boolean BLACK = false;
@@ -17,7 +15,7 @@ public class NoRedBlack<E> {
 	/** Filho esquerdo do no. */
 	private NoRedBlack<E> esq;
 
-	/** Parent of this node. */
+	/** Pai deste no. */
 	private NoRedBlack<E> pai;
 
 	/** Filho direito do no. */
@@ -26,13 +24,11 @@ public class NoRedBlack<E> {
 	/** Usado para construir a sentinela. */
 	protected NoRedBlack() {
 		color = BLACK;
-		// All other fields are irrelevant
 	}
 
-	/**
-	 * The new node is red and both of its children are sentinel. The node's
-	 * parent is NOT set by this constructor.
-	 */
+	
+	/**O novo no e vermelho e seus dois filhos são sentinela. 
+	 * O no pai NÃO e definido por este construtor.*/
 	public NoRedBlack(E obj, NoRedBlack<E> sentinel) {
 		color = RED;
 		this.obj = obj;
@@ -42,9 +38,8 @@ public class NoRedBlack<E> {
 	}
 
 	/**
-	 * Retorna o no esquerdo (if direction is negative) or right (otherwise)
-	 * child.
-	 */
+	 * Retornar o no esquerdo (se a direção for negativa) 
+	 * ou direita (caso contrário) criança.*/
 	public NoRedBlack<E> getFilho(int direcao) {
 		if (direcao < 0) {
 			return esq;
@@ -52,45 +47,44 @@ public class NoRedBlack<E> {
 		return dir;
 	}
 
-	/** Return the color of this node. */
+	/** Retornar a cor deste no. */
 	public boolean getColor() {
 		return color;
 	}
 
-	/** Return the item associated with this node. */
+	/** Retornar o item associado a este no. */
 	public E getObj() {
 		return obj;
 	}
 
-	/** Retorna o filho do no esquerdo. */
+	/** Retornar o filho do no esquerdo. */
 	public NoRedBlack<E> getEsq() {
 		return esq;
 	}
 
-	/** Return this node's parent. */
+	/** Retornar o pai deste no. */
 	public NoRedBlack<E> getPai() {
 		return pai;
 	}
 
-	/** Return this node's right child. */
+	/** Retornar o filho direito deste no. */
 	public NoRedBlack<E> getDir() {
 		return dir;
 	}
 
-	/** Return true if this node is black. */
+	/** Retornar verdadeiro se este no for preto. */
 	public boolean isBlack() {
 		return color == BLACK;
 	}
 
-	/** Return true if this node is red. */
+	/** Retornar verdadeiro se este no for vermelho. */
 	public boolean isRed() {
 		return color == RED;
 	}
 
 	/**
-	 * Set this node's left (if direction is negative) or right (otherwise)
-	 * child.
-	 */
+	 Define a esquerda deste no (se a direção for negativa) 
+	 ou direita (caso contrario)crianca.*/
 	public void setFilho(int direcao, NoRedBlack<E> filho) {
 		if (direcao < 0) {
 			esq = filho;
@@ -99,27 +93,27 @@ public class NoRedBlack<E> {
 		}
 	}
 
-	/** Make this node black. */
+	/** Define como preto */
 	public void setBlack() {
 		color = BLACK;
 	}
 
-	/** Set the color of this node. */
+	/** Define a cor do no. */
 	public void setColor(boolean color) {
 		this.color = color;
 	}
 
-	/** Set the item associated with this node. */
+	/** Define o item associado a este no. */
 	public void setObj(E obj) {
 		this.obj = obj;
 	}
 
-	/** Set the parent of this node. */
+	/** Define o pai deste no. */
 	public void setPai(NoRedBlack<E> pai) {
 		this.pai = pai;
 	}
 
-	/** Make this node red. */
+	/** Define como vermelho. */
 	public void setRed() {
 		color = RED;
 	}

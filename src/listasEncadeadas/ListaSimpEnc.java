@@ -48,13 +48,13 @@ public class ListaSimpEnc<E extends Comparable<E>> implements Serializable {
 		}
 	}
 
-	// Feito Retorna a referência ao início da lista
+	// Feito Retorna a referï¿½ncia ao inï¿½cio da lista
 	public NoSimpEnc<E> getInicio() {
 		return inicio;
 
 	}
 
-	// Feito Retorna a referência ao final da lista
+	// Feito Retorna a referï¿½ncia ao final da lista
 	public NoSimpEnc<E> getFim() {
 		return fim;
 
@@ -66,7 +66,7 @@ public class ListaSimpEnc<E extends Comparable<E>> implements Serializable {
 		fim = null;
 	}
 
-	// Feito Informa se a lista está vazia ou não
+	// Feito Informa se a lista estï¿½ vazia ou nï¿½o
 	public boolean isEmpty() {
 		if (inicio == null)
 			return true;
@@ -74,7 +74,7 @@ public class ListaSimpEnc<E extends Comparable<E>> implements Serializable {
 
 	}
 
-	// Insere um nó no início da lista
+	// Insere um nï¿½ no inï¿½cio da lista
 	public void insertAtBegin(E obj) {
 		NoSimpEnc<E> novoNo = new NoSimpEnc<E>(obj);
 		if (inicio == null) {
@@ -88,7 +88,7 @@ public class ListaSimpEnc<E extends Comparable<E>> implements Serializable {
 		numItens++;
 	}
 
-	// Feito Insere um nó no final da lista
+	// Feito Insere um nï¿½ no final da lista
 	public void insertAtEnd(E obj) {
 		NoSimpEnc<E> novoNo = new NoSimpEnc<E>(obj);
 		if (inicio == null) {
@@ -101,7 +101,7 @@ public class ListaSimpEnc<E extends Comparable<E>> implements Serializable {
 		numItens++;
 	}
 
-	// Feito Insere um nó após o nó apontado por p
+	// Feito Insere um nï¿½ apï¿½s o nï¿½ apontado por p
 	public void insertAfter(E obj, NoSimpEnc<E> p) {
 		NoSimpEnc<E> novoNo = new NoSimpEnc<E>(obj, p.getProx());
 		if (p == fim)
@@ -110,8 +110,8 @@ public class ListaSimpEnc<E extends Comparable<E>> implements Serializable {
 		numItens++;
 	}
 
-	// Feito Remover o primeiro nó da lista,
-	// retornando a referência ao objeto que se
+	// Feito Remover o primeiro nï¿½ da lista,
+	// retornando a referï¿½ncia ao objeto que se
 	// encontra armazenado nele.
 	// Se a lista estiver vazia retorna null
 	public E removeFromBegin() {
@@ -127,11 +127,11 @@ public class ListaSimpEnc<E extends Comparable<E>> implements Serializable {
 		}
 	}
 
-	// Remover o nó que segue o nó apontado por p,
-	// retornando a referência ao objeto que se encontra
+	// Remover o nï¿½ que segue o nï¿½ apontado por p,
+	// retornando a referï¿½ncia ao objeto que se encontra
 	// armazenado nele.
-	// Se a lista estiver vazia ou se não existir o
-	// próximo nó, retorna null
+	// Se a lista estiver vazia ou se nï¿½o existir o
+	// prï¿½ximo nï¿½, retorna null
 	public E removeAfter(NoSimpEnc<E> p) {
 		if (p == null)
 			return null;

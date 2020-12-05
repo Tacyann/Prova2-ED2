@@ -3,7 +3,7 @@ package listasEncadeadas;
 import colecoes.MyIterator;
 import colecoes.MyIteratorBack;
 
-//Lista duplamente encadeada com no cabeça
+//Lista duplamente encadeada com no cabeï¿½a
 public class ListaDupEnc<E> {
 
 	protected NoDupEnc<E> noCabeca;
@@ -54,7 +54,7 @@ public class ListaDupEnc<E> {
 		@Override
 		public void remove() {
 			// numa classe interna para chamar um metodo de mesmo nome da classe
-			// é so colocar o nome da classe.this.nome do metodo;
+			// ï¿½ so colocar o nome da classe.this.nome do metodo;
 			ListaDupEnc.this.remove(noAtual);
 			// noAtual.remove(); pode ser usado desta forma.
 		}

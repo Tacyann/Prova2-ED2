@@ -4,25 +4,30 @@ import java.io.Serializable;
 
 public class NoArvoreBin<E extends Comparable<E>> implements Serializable {
 
-	/** Contém o objeto associado a esse nó */
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/** Contï¿½m o objeto associado a esse nï¿½ */
 	private E obj;
 
-	/** Referência à subárvore esquerda */
+	/** Referï¿½ncia ï¿½ subï¿½rvore esquerda */
 	private NoArvoreBin<E> esq;
 
-	/** referência a subárvore direita */
+	/** referï¿½ncia a subï¿½rvore direita */
 	private NoArvoreBin<E> dir;
 
-	// ** referência ao pai do nó
+	// ** referï¿½ncia ao pai do nï¿½
 	private NoArvoreBin<E> pai;
 
-	/** Cria um nó com filhos nulos (folha) */
+	/** Cria um nï¿½ com filhos nulos (folha) */
 	public NoArvoreBin(E obj, NoArvoreBin<E> pai) {
 		this.obj = obj;
 		this.pai = pai;
 	}
 
-	/** Cria um nó com as respectivas subárvores esquerda e direita. */
+	/** Cria um nï¿½ com as respectivas subï¿½rvores esquerda e direita. */
 	public NoArvoreBin(E obj, NoArvoreBin<E> pai, NoArvoreBin<E> esq,
 			NoArvoreBin<E> dir) {
 		this(obj, pai);
@@ -48,17 +53,17 @@ public class NoArvoreBin<E extends Comparable<E>> implements Serializable {
 		this.pai = pai;
 	}
 
-	/** Retorna o objeto associado a esse nó. */
+	/** Retorna o objeto associado a esse nï¿½. */
 	public E getObj() {
 		return obj;
 	}
 
-	/** Retorna a referência da subárvore esquerda. */
+	/** Retorna a referï¿½ncia da subï¿½rvore esquerda. */
 	public NoArvoreBin<E> getEsq() {
 		return esq;
 	}
 
-	/** Retorna a referência da subárvore direita. */
+	/** Retorna a referï¿½ncia da subï¿½rvore direita. */
 	public NoArvoreBin<E> getDir() {
 		return dir;
 	}
@@ -68,19 +73,19 @@ public class NoArvoreBin<E extends Comparable<E>> implements Serializable {
 		this.obj = obj;
 	}
 
-	/** Substitui a referência da subárvore esquerda por esq. */
+	/** Substitui a referï¿½ncia da subï¿½rvore esquerda por esq. */
 	public void setEsq(NoArvoreBin<E> esq) {
 		this.esq = esq;
 	}
 
-	/** Substitui a referência da subárvore direita por dir. */
+	/** Substitui a referï¿½ncia da subï¿½rvore direita por dir. */
 	public void setDir(NoArvoreBin<E> dir) {
 		this.dir = dir;
 	}
 
 	/**
-	 * Retorna o filho do nó de acordo com o valor de direcao. Se direcao < 0
-	 * retorna o filho esquerdo caso contrário retorna o filho direito.
+	 * Retorna o filho do nï¿½ de acordo com o valor de direcao. Se direcao < 0
+	 * retorna o filho esquerdo caso contrï¿½rio retorna o filho direito.
 	 */
 	public NoArvoreBin<E> getFilho(int direcao) {
 		if (direcao < 0)
@@ -90,8 +95,8 @@ public class NoArvoreBin<E extends Comparable<E>> implements Serializable {
 	}
 
 	/**
-	 * Atribui o filho do nó de acordo com o valor de direcao. Se direcao < 0
-	 * atribui o filho esquerdo, caso contrário, atribui o filho direito.
+	 * Atribui o filho do nï¿½ de acordo com o valor de direcao. Se direcao < 0
+	 * atribui o filho esquerdo, caso contrï¿½rio, atribui o filho direito.
 	 */
 	public void setFilho(int direcao, NoArvoreBin<E> filho) {
 		if (direcao < 0)
